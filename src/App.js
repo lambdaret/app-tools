@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Suspense} from "react";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import ExchangeRate from "./ExchangeRate/ExchangeRate";
+import Main from "./Main";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: `"Consolas", "Roboto", "Helvetica", "Arial", sans-serif`,
+    fontSize: 12,
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={<p>Loading user details...</p>}>
+      <HashRouter>
+        <ThemeProvider theme={theme}>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/exchange-rate" element={<ExchangeRate />} />
+          </Routes>
+        </ThemeProvider>
+      </HashRouter>
+    </Suspense>
   );
 }
 
