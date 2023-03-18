@@ -41,6 +41,7 @@ const SourceBox = ({ onChange }) => {
   const sources = getSource();
   return (
     <Autocomplete
+      autoHighlight
       onChange={onChange}
       size="small"
       style={{ width: "100%" }}

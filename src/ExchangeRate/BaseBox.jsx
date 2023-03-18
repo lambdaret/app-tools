@@ -11,6 +11,7 @@ const BaseBox = ({ options, label, onChange }) => {
   return (
     <Autocomplete
       onChange={onChange}
+      autoHighlight
       size="small"
       options={Object.values(options.symbols)}
       getOptionLabel={(option) => option.code}

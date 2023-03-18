@@ -17,6 +17,7 @@ const SymbolBox = ({ options, label, onChange }) => {
   return (
     <Autocomplete
       multiple
+      autoHighlight
       onChange={onChange}
       size="small"
       options={Object.values(options.symbols)}

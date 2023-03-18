@@ -182,18 +182,12 @@ const ExchangeRate = () => {
         </Grid>
         <Grid item xs={12}>
           <TextField
-            label=""
+            label="Rate"
+            focused
             multiline
             rows={18}
             sx={{ width: "100%" }}
             value={downloadData}
-            InputProps={{
-              readOnly: true,
-            }}
-            // onChange={(e) => {
-            //   setDownloadData(e.target.value);
-            // }}
-            // defaultValue=""
           />
         </Grid>
         {downloadUrls?.map((link) => (
