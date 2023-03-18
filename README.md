@@ -73,9 +73,9 @@ npm i react-router-dom -S
 npm install @mui/material @emotion/react @emotion/styled
 
 npm i date-fns
-npm i @material-ui/core --legacy-peer-deps
-npm i @material-ui/icons --legacy-peer-deps
-npm i @mui/icons-material --legacy-peer-deps
-npm i gh-pages
+npm i @material-ui/core
+npm i @material-ui/icons
+npm i @mui/icons-material
+npm i gh-pages -S
 
-export NODE_OPTIONS=--openssl-legacy-provider
+<!-- export NODE_OPTIONS=--openssl-legacy-provider -->

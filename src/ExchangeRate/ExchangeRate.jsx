@@ -75,6 +75,9 @@ const ExchangeRate = () => {
   };
 
   const handleGetData = () => {
+    setDownloadUrls([]);
+    setDownloadData("");
+
     const params = {
       start_date: selectedStartDate || "",
       end_date: selectedEndDate || "",
@@ -179,12 +182,18 @@ const ExchangeRate = () => {
         </Grid>
         <Grid item xs={12}>
           <TextField
-            id="outlined-multiline-static"
-            label="Exchange Rate"
+            label=""
             multiline
             rows={18}
             sx={{ width: "100%" }}
             value={downloadData}
+            InputProps={{
+              readOnly: true,
+            }}
+            // onChange={(e) => {
+            //   setDownloadData(e.target.value);
+            // }}
+            // defaultValue=""
           />
         </Grid>
         {downloadUrls?.map((link) => (
