@@ -1,13 +1,11 @@
-import React, { useState, Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import fetchData from "../api/fetchData";
-import { format } from "date-fns";
 
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
-import TextField from "@mui/material/TextField";
+// import TextField from "@mui/material/TextField";
 import DateBox from "./DateBox";
 import SourceBox from "./SourceBox";
 import FormatBox from "./FormatBox";
@@ -15,103 +13,85 @@ import BaseBox from "./BaseBox";
 import SymbolBox from "./SymbolBox";
 import TextBox from "./TextBox";
 
+// import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import {
+  setState,
+  // getState,
+  START_DATE,
+  END_DATE,
+  FORMAT,
+  BASE,
+  SOURCE,
+  SYMBOLS,
+  AMOUNT,
+  PLACE,
+  // DOWNLOAD_URLS,
+  // DOWNLOAD_DATA,
+} from "./stateSlice";
+import ButtonGetData from "./ButtonGetData";
+import DataBox from "./DataBox";
+import UrlBox from "./UrlBox";
+
 const fetchSymbol = fetchData("https://api.exchangerate.host/symbols");
 
 const ExchangeRate = () => {
-  const now = format(new Date(), "yyyy-MM-dd");
+  const dispatch = useDispatch();
 
-  const [selectedStartDate, setSelectedStartDate] = useState(now);
-  const [selectedEndDate, setSelectedEndDate] = useState(now);
-  const [selectedSource, setSelectedSource] = useState();
-  const [selectedFormat, setSelectedFormat] = useState();
-  const [selectedBase, setSelectedBase] = useState();
-  const [selectedSymbols, setSelectedSymbols] = useState([]);
-  const [selectedAmount, setSelectedAmount] = useState();
-  const [selectedPlace, setSelectedPlace] = useState();
-  const [downloadUrls, setDownloadUrls] = useState([]);
-  const [downloadData, setDownloadData] = useState();
+  const setSelected = (nm, value) => {
+    dispatch(setState({ type: nm, value: value }));
+  };
+  // const downloadUrls = useSelector(getState(DOWNLOAD_URLS));
+  // const downloadData = useSelector(getState(DOWNLOAD_DATA));
 
   const handleChangeStartDate = (event) => {
     const {
       target: { value },
     } = event;
-    setSelectedStartDate(value);
+    setSelected(START_DATE, value);
   };
   const handleChangeEndDate = (event) => {
     const {
       target: { value },
     } = event;
-    setSelectedEndDate(value);
-  };
-  const handleChangeSource = (event, value) => {
-    setSelectedSource(value);
+    setSelected(END_DATE, value);
   };
   const handleChangeFormat = (event, value) => {
-    setSelectedFormat(value);
+    setSelected(FORMAT, value);
   };
   const handleChangeBase = (event, value) => {
-    setSelectedBase(value);
+    setSelected(BASE, value);
+  };
+  const handleChangeSource = (event, value) => {
+    setSelected(SOURCE, value);
   };
   const handleChangeSymbol = (event, value) => {
-    setSelectedSymbols(value);
+    setSelected(SYMBOLS, value);
   };
   const handleChangeAmount = (event) => {
     const {
       target: { value },
     } = event;
-    setSelectedAmount(value);
+    setSelected(AMOUNT, value);
   };
   const handleClearAmount = (event) => {
-    setSelectedAmount("");
+    setSelected(AMOUNT, "");
   };
   const handleChangePlace = (event) => {
     const {
       target: { value },
     } = event;
-    setSelectedPlace(value);
+    setSelected(PLACE, value);
   };
   const handleClearPlace = (event) => {
-    setSelectedPlace("");
+    setSelected(PLACE, "");
   };
 
-  const handleGetData = () => {
-    setDownloadUrls([]);
-    setDownloadData("");
-
-    const params = {
-      start_date: selectedStartDate || "",
-      end_date: selectedEndDate || "",
-      base: selectedBase?.code || "",
-      symbols: selectedSymbols
-        ? selectedSymbols.map(({ code }) => code).join(",")
-        : "",
-      amount: selectedAmount || "",
-      places: selectedPlace || "",
-      format: selectedFormat || "",
-      source: selectedSource?.source || "",
-    };
-    const url = "https://api.exchangerate.host/timeseries";
-    const ext = selectedFormat ? selectedFormat : "json";
-    const downloadUrl = `${url}?${new URLSearchParams(params).toString()}`;
-    setDownloadUrls([downloadUrl]);
-
-    if (ext === "json") {
-      fetch(downloadUrl)
-        .then((res) => res.json())
-        .then((res) => {
-          setDownloadData(JSON.stringify(res, null, 2));
-        });
-    } else {
-      fetch(downloadUrl)
-        .then((res) => res.text())
-        .then((res) => {
-          setDownloadData(res);
-        });
-    }
-  };
+  useEffect(() => {
+    document.title = "Exchange Rate";
+  }, []);
 
   const symbols = fetchSymbol.read();
-
   return (
     <div style={{ padding: 5 }}>
       <h1>ExchangeRate</h1>
@@ -119,14 +99,14 @@ const ExchangeRate = () => {
         <Grid item xs={4}>
           <DateBox
             label="Start Date"
-            defaultValue={selectedStartDate}
+            type={START_DATE}
             onChange={handleChangeStartDate}
           />
         </Grid>
         <Grid item xs={4}>
           <DateBox
             label="End Date"
-            defaultValue={selectedEndDate}
+            type={END_DATE}
             onChange={handleChangeEndDate}
           />
         </Grid>
@@ -155,7 +135,7 @@ const ExchangeRate = () => {
         <Grid item xs={6}>
           <TextBox
             label="Amount"
-            value={selectedAmount}
+            type={AMOUNT}
             onClear={handleClearAmount}
             onChange={handleChangeAmount}
           />
@@ -163,7 +143,7 @@ const ExchangeRate = () => {
         <Grid item xs={6}>
           <TextBox
             label="Place"
-            value={selectedPlace}
+            type={PLACE}
             onClear={handleClearPlace}
             onChange={handleChangePlace}
           />
@@ -175,29 +155,13 @@ const ExchangeRate = () => {
         </Grid>
         <Grid item xs={12}>
           <Box sx={{ display: "flex" }}>
-            <Button variant="contained" onClick={handleGetData} size="small">
-              Get Data
-            </Button>
+            <ButtonGetData />
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <TextField
-            label="Rate"
-            focused
-            multiline
-            rows={18}
-            sx={{ width: "100%" }}
-            value={downloadData}
-          />
+          <DataBox />
         </Grid>
-        {downloadUrls?.map((link) => (
-          <Grid item xs={12} key={link}>
-            <Link href={link} target="_blank" download>
-              {link}
-            </Link>
-          </Grid>
-        ))}
-
+        <UrlBox />
         <Grid item xs={12}>
           <Divider />
         </Grid>

@@ -1,8 +1,11 @@
-import React, {Suspense} from "react";
+import React, { Suspense } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { HashRouter, Routes, Route } from "react-router-dom";
-import ExchangeRate from "./ExchangeRate/ExchangeRate";
-import Main from "./Main";
+
+const Main = React.lazy(() => import("./Main"));
+const ExchangeRate = React.lazy(() => import("./ExchangeRate"));
+const ReduxTest = React.lazy(() => import("./ReduxTest"));
+const ReduxTest2 = React.lazy(() => import("./ReduxTest2"));
 
 const theme = createTheme({
   typography: {
@@ -17,8 +20,10 @@ function App() {
       <HashRouter>
         <ThemeProvider theme={theme}>
           <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/exchange-rate" element={<ExchangeRate />} />
+            <Route exact path="/" element={<Main />} />
+            <Route exact path="/exchange-rate/" element={<ExchangeRate />} />
+            <Route exact path="/redux-test/" element={<ReduxTest />} />
+            <Route exact path="/redux-test2/" element={<ReduxTest2 />} />
           </Routes>
         </ThemeProvider>
       </HashRouter>

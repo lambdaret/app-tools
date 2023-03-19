@@ -79,3 +79,6 @@ npm i @mui/icons-material
 npm i gh-pages -S
 
 <!-- export NODE_OPTIONS=--openssl-legacy-provider -->
+
+npm install react-redux -S
+npm install redux-persist -S

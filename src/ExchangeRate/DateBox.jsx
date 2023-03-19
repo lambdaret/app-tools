@@ -1,12 +1,15 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
+import { useSelector } from "react-redux";
+import { getState } from "./stateSlice";
 
-const DateBox = ({ label, defaultValue, onChange }) => {
+const DateBox = ({ label, type, onChange }) => {
+  const selectedDate = useSelector(getState(type));
   return (
     <TextField
       label={label}
       type="date"
-      defaultValue={defaultValue}
+      value={selectedDate}
       onChange={onChange}
       size="small"
       sx={{ width: "100%" }}
