@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkapp_tools=self.webpackChunkapp_tools||[]).push([[783],{9063:function(e,n,t){t.r(n);var a=t(1087),c=t(3329);n.default=function(){return(0,c.jsx)("div",{children:(0,c.jsx)("div",{children:(0,c.jsx)(a.rU,{to:"/exchange-rate/",children:"Exchange Rate"})})})}}}]);
+//# sourceMappingURL=783.0b388cf9.chunk.js.map

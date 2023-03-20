@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkapp_tools=self.webpackChunkapp_tools||[]).push([[783],{9063:function(e,t,s){s.r(t);var r=s(1087),n=s(3329);t.default=function(){return(0,n.jsxs)("div",{children:[(0,n.jsx)(r.rU,{to:"/exchange-rate/",children:"Exchange Rate"}),(0,n.jsx)(r.rU,{to:"/redux-test/",children:"Redux Test"}),(0,n.jsx)(r.rU,{to:"/redux-test2/",children:"Redux Test2"})]})}}}]);
-//# sourceMappingURL=783.d2ea8ad8.chunk.js.map
