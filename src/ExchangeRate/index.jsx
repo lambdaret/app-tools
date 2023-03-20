@@ -5,7 +5,6 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
-// import TextField from "@mui/material/TextField";
 import DateBox from "./DateBox";
 import SourceBox from "./SourceBox";
 import FormatBox from "./FormatBox";
@@ -13,11 +12,9 @@ import BaseBox from "./BaseBox";
 import SymbolBox from "./SymbolBox";
 import TextBox from "./TextBox";
 
-// import { useSelector, useDispatch } from "react-redux";
 import { useDispatch } from "react-redux";
 import {
   setState,
-  // getState,
   START_DATE,
   END_DATE,
   FORMAT,
@@ -26,8 +23,6 @@ import {
   SYMBOLS,
   AMOUNT,
   PLACE,
-  // DOWNLOAD_URLS,
-  // DOWNLOAD_DATA,
 } from "./stateSlice";
 import ButtonGetData from "./ButtonGetData";
 import DataBox from "./DataBox";
@@ -92,7 +87,7 @@ const ExchangeRate = () => {
   const symbols = fetchSymbol.read();
   return (
     <div style={{ padding: 5 }}>
-      <h1>Exchange Rate</h1>
+      <h3 style={{ marginTop: 0 }}>Exchange Rate</h3>
       <Grid container spacing={1}>
         <Grid item xs={4}>
           <DateBox
