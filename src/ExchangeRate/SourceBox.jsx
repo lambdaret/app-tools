@@ -39,7 +39,7 @@ const getSource = () => {
   return [...s1, ...s2];
 };
 const isOptionEqualToValue = (option, value) => {
-  if (Object.keys(value).length === 0) {
+  if (value === null) {
     return true;
   }
   return option?.source === value?.source;

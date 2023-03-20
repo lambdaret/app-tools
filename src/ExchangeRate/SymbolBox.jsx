@@ -15,7 +15,7 @@ const filterOptions = createFilterOptions({
 });
 
 const isOptionEqualToValue = (option, value) => {
-  if (Object.keys(value).length === 0) {
+  if (value === null) {
     return true;
   }
   return option?.code === value?.code;
