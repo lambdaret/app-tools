@@ -114,7 +114,7 @@ const ExchangeRate = () => {
           <FormatBox onChange={handleChangeFormat} />
         </Grid>
         <Grid item xs={6}>
-          <Suspense fallback={<p>Loading user details...</p>}>
+          <Suspense fallback={<div>Loading ...</div>}>
             <BaseBox
               label="Base"
               options={symbols}
@@ -123,7 +123,7 @@ const ExchangeRate = () => {
           </Suspense>
         </Grid>
         <Grid item xs={6}>
-          <Suspense fallback={<p>Loading user details...</p>}>
+          <Suspense fallback={<div>Loading ...</div>}>
             <SymbolBox
               label="Symbols"
               options={symbols}
@@ -149,7 +149,7 @@ const ExchangeRate = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <Suspense fallback={<p>Loading user details...</p>}>
+          <Suspense fallback={<div>Loading ...</div>}>
             <SourceBox onChange={handleChangeSource} />
           </Suspense>
         </Grid>

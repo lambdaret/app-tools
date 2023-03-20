@@ -16,7 +16,7 @@ const theme = createTheme({
 
 function App() {
   return (
-    <Suspense fallback={<p>Loading user details...</p>}>
+    <Suspense fallback={<div>Loading ...</div>}>
       <HashRouter>
         <ThemeProvider theme={theme}>
           <Routes>
