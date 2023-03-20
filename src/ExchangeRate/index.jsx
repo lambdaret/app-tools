@@ -41,8 +41,6 @@ const ExchangeRate = () => {
   const setSelected = (nm, value) => {
     dispatch(setState({ type: nm, value: value }));
   };
-  // const downloadUrls = useSelector(getState(DOWNLOAD_URLS));
-  // const downloadData = useSelector(getState(DOWNLOAD_DATA));
 
   const handleChangeStartDate = (event) => {
     const {
@@ -94,7 +92,7 @@ const ExchangeRate = () => {
   const symbols = fetchSymbol.read();
   return (
     <div style={{ padding: 5 }}>
-      <h1>ExchangeRate</h1>
+      <h1>Exchange Rate</h1>
       <Grid container spacing={1}>
         <Grid item xs={4}>
           <DateBox
