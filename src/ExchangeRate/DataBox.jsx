@@ -9,9 +9,10 @@ const DataBox = () => {
       label="Rate"
       focused
       multiline
-      rows={18}
+      rows={15}
       sx={{ width: "100%" }}
       value={value}
+      inputProps={{ wrap: "off" }}
     />
   );
 };
