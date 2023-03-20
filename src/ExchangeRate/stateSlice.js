@@ -21,11 +21,11 @@ export const stateSlice = createSlice({
       START_DATE: now,
       END_DATE: now,
       FORMAT: "",
-      BASE: {},
+      BASE: null,
       SYMBOLS: [],
       AMOUNT: "",
       PLACE: "",
-      SOURCE: {},
+      SOURCE: null,
     },
   },
   reducers: {

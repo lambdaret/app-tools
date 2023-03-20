@@ -4,7 +4,8 @@ import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
-
+import { useSelector } from "react-redux";
+import { getState, SYMBOLS } from "./stateSlice";
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
@@ -13,7 +14,14 @@ const filterOptions = createFilterOptions({
   stringify: (option) => `${option?.code} ${option?.description}`,
 });
 
+const isOptionEqualToValue = (option, value) => {
+  if (Object.keys(value).length === 0) {
+    return true;
+  }
+  return option?.code === value?.code;
+};
 const SymbolBox = ({ options, label, onChange }) => {
+  const selectedSymbols = useSelector(getState(SYMBOLS));
   return (
     <Autocomplete
       multiple
@@ -21,8 +29,10 @@ const SymbolBox = ({ options, label, onChange }) => {
       onChange={onChange}
       size="small"
       options={Object.values(options.symbols)}
+      value={selectedSymbols}
+      isOptionEqualToValue={isOptionEqualToValue}
       disableCloseOnSelect
-      getOptionLabel={(option) => option.code}
+      getOptionLabel={(option) => option?.code || ""}
       filterOptions={filterOptions}
       renderOption={(props, option, { selected }) => (
         <li {...props} style={{ paddingTop: 0, paddingBottom: 0 }}>
@@ -32,7 +42,7 @@ const SymbolBox = ({ options, label, onChange }) => {
             style={{ marginRight: 8, paddingTop: 0, paddingBottom: 0 }}
             checked={selected}
           />
-          {option.code} - {option.description}
+          {option?.code} - {option?.description}
         </li>
       )}
       style={{ width: "100%" }}

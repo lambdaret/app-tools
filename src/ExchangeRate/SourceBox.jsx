@@ -2,6 +2,8 @@ import React from "react";
 import fetchData from "../api/fetchData";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
+import { useSelector } from "react-redux";
+import { getState, SOURCE } from "./stateSlice";
 
 const fetchSource1 = fetchData("https://api.exchangerate.host/sources");
 const fetchSource2 = fetchData(
@@ -36,9 +38,16 @@ const getSource = () => {
   });
   return [...s1, ...s2];
 };
+const isOptionEqualToValue = (option, value) => {
+  if (Object.keys(value).length === 0) {
+    return true;
+  }
+  return option?.source === value?.source;
+};
 
 const SourceBox = ({ onChange }) => {
   const sources = getSource();
+  const selectedSource = useSelector(getState(SOURCE));
   return (
     <Autocomplete
       autoHighlight
@@ -46,14 +55,15 @@ const SourceBox = ({ onChange }) => {
       size="small"
       style={{ width: "100%" }}
       options={sources}
-      isOptionEqualToValue={(option, value) => option.source === value.source}
-      groupBy={(option) => option.group}
+      value={selectedSource}
+      isOptionEqualToValue={isOptionEqualToValue}
+      groupBy={(option) => option?.group}
       // disableCloseOnSelect
-      getOptionLabel={(option) => option.source}
+      getOptionLabel={(option) => option?.source || ""}
       filterOptions={filterSourceOptions}
       renderOption={(props, option, { selected }) => (
         <li {...props} style={{ paddingTop: 0, paddingBottom: 0 }}>
-          {option.source} - {option.description}{" "}
+          {option?.source} - {option?.description}{" "}
           {option?.available_from_date
             ? `(${option?.available_from_date}~)`
             : null}

@@ -4,6 +4,14 @@ import { useSelector } from "react-redux";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { getState, FORMAT } from "./stateSlice";
+
+const isOptionEqualToValue = (option, value) => {
+  if (value === "") {
+    return true;
+  }
+  return option === value;
+};
+
 const FormatBox = ({ onChange }) => {
   const selectedFormat = useSelector(getState(FORMAT));
   return (
@@ -11,8 +19,9 @@ const FormatBox = ({ onChange }) => {
       onChange={onChange}
       size="small"
       value={selectedFormat}
+      isOptionEqualToValue={isOptionEqualToValue}
       options={["xml", "csv", "tsv"]}
-      getOptionLabel={(option) => option}
+      getOptionLabel={(option) => option || ""}
       renderOption={(props, option, { selected }) => (
         <li {...props} style={{ paddingTop: 0, paddingBottom: 0 }}>
           {option}
