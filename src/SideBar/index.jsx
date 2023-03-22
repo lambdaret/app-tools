@@ -29,16 +29,15 @@ const SideBar = () => {
 
   const drawerWidth = open ? 260 : 0;
 
-  const handleDrawerClose = () => {
+  const handleDrawerClose = (e) => {
     dispatch(setState({ type: SIDEBAR_OPEN, value: false }));
   };
   const handleDrawerCloseUnPined = (e) => {
-    e.preventDefault();
     if (!pined) {
       dispatch(setState({ type: SIDEBAR_OPEN, value: false }));
     }
   };
-  const handleSidebarPined = () => {
+  const handleSidebarPined = (e) => {
     dispatch(setToggle({ type: SIDEBAR_PINED }));
   };
   const goMenu = (menuNm) => {
@@ -64,7 +63,7 @@ const SideBar = () => {
       // variant="persistent"
       // variant="temporary"
       // variant="permanent"
-      variant={pined ? "permanent" : "temporary"}
+      variant={"permanent"}
       anchor="left"
       open={open}
       onClose={handleDrawerClose}
