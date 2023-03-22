@@ -1,8 +1,13 @@
 import { AppBar, IconButton, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Typography from "@mui/material/Typography";
-import { useDispatch } from "react-redux";
-import { setToggle, SIDEBAR_OPEN } from "../TopMenu/stateSlice";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setToggle,
+  getState as getTitle,
+  SIDEBAR_OPEN,
+  TITLE,
+} from "./stateSlice";
 
 const TopMenu = () => {
   const dispatch = useDispatch();
@@ -10,6 +15,7 @@ const TopMenu = () => {
   const handleDrawerOpen = () => {
     dispatch(setToggle({ type: SIDEBAR_OPEN }));
   };
+  const title = useSelector(getTitle(TITLE));
 
   return (
     <AppBar positon="static">
@@ -25,7 +31,7 @@ const TopMenu = () => {
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          {document.title}
+          {title}
         </Typography>
       </Toolbar>
     </AppBar>

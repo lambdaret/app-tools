@@ -24,6 +24,7 @@ import {
   AMOUNT,
   PLACE,
 } from "./stateSlice";
+import { TITLE, setState as setTitle } from "../TopMenu/stateSlice";
 import ButtonGetData from "./ButtonGetData";
 import DataBox from "./DataBox";
 import UrlBox from "./UrlBox";
@@ -81,8 +82,8 @@ const ExchangeRate = () => {
   };
 
   useEffect(() => {
-    document.title = "Exchange Rate";
-  }, []);
+    dispatch(setTitle({ type: TITLE, value: "Exchange Rate" }));
+  }, [dispatch]);
 
   const symbols = fetchSymbol.read();
   return (

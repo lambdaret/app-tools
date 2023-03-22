@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const SIDEBAR_OPEN = "SIDEBAR_OPEN";
 export const SIDEBAR_PINED = "SIDEBAR_PINED";
+export const TITLE = "TITLE";
 
 export const stateSlice = createSlice({
   name: "menu",
@@ -9,6 +10,7 @@ export const stateSlice = createSlice({
     value: {
       SIDEBAR_OPEN: false,
       SIDEBAR_PINED: false,
+      TITLE: "Tools",
     },
   },
   reducers: {
