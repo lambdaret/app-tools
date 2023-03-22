@@ -5,7 +5,9 @@ import useScrollTrigger from "@mui/material/useScrollTrigger";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import Fab from "@mui/material/Fab";
 
-function ScrollTop({ anchorName }) {
+function ScrollTop({ anchorName }, props) {
+  const { window } = props;
+
   // Note that you normally won't need to set the window ref as useScrollTrigger
   // will default to window.
   // This is only being set here because the demo is in an iframe.

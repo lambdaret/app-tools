@@ -15,7 +15,7 @@ const ExchangeRate = React.lazy(() => import("./ExchangeRate"));
 const ReduxTest = React.lazy(() => import("./ReduxTest"));
 const ReduxTest2 = React.lazy(() => import("./ReduxTest2"));
 
-function App() {
+function App(props) {
   // const open = useSelector(getState(SIDEBAR_OPEN));
   // const pined = useSelector(getState(SIDEBAR_PINED));
 
@@ -52,7 +52,7 @@ function App() {
                 <Route exact path="/redux-test2/" element={<ReduxTest2 />} />
               </Routes>
             </Container>
-            <ScrollTop anchorName="back-to-top-anchor">
+            <ScrollTop anchorName="back-to-top-anchor" {...props}>
               {/* <Fab size="small" aria-label="scroll back to top">
                 <KeyboardArrowUpIcon />
               </Fab> */}
