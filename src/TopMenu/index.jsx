@@ -24,12 +24,8 @@ const TopMenu = () => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-        >
-          Tools - {document.title}
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          {document.title}
         </Typography>
       </Toolbar>
     </AppBar>
