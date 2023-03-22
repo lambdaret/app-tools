@@ -7,7 +7,7 @@ import SideBar from "./SideBar";
 import { useSelector } from "react-redux";
 import { getState, SIDEBAR_OPEN, SIDEBAR_PINED } from "./TopMenu/stateSlice";
 
-const Tools = React.lazy(() => import("./Tools"));
+const Home = React.lazy(() => import("./Home"));
 const ExchangeRate = React.lazy(() => import("./ExchangeRate"));
 const ReduxTest = React.lazy(() => import("./ReduxTest"));
 const ReduxTest2 = React.lazy(() => import("./ReduxTest2"));
@@ -38,7 +38,7 @@ function App() {
             <Toolbar />
             <div style={{ marginTop: 10 }}>
               <Routes>
-                <Route exact path="/" element={<Tools />} />
+                <Route exact path="/" element={<Home />} />
                 <Route
                   exact
                   path="/exchange-rate/"

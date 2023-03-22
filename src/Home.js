@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { TITLE, setState as setTitle } from "./TopMenu/stateSlice";
+import { MENU_NM, setState as setMenuState } from "./TopMenu/stateSlice";
 
-function Tools() {
+function Home() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setTitle({ type: TITLE, value: "Tools" }));
+    dispatch(setMenuState({ type: MENU_NM, value: "Home" }));
   }, [dispatch]);
 
   return (
@@ -18,4 +18,4 @@ function Tools() {
   );
 }
 
-export default Tools;
+export default Home;

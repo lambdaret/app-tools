@@ -19,12 +19,14 @@ import {
   getState,
   SIDEBAR_OPEN,
   SIDEBAR_PINED,
+  MENU_NM,
 } from "../TopMenu/stateSlice";
 
 const SideBar = () => {
   const dispatch = useDispatch();
   const open = useSelector(getState(SIDEBAR_OPEN));
   const pined = useSelector(getState(SIDEBAR_PINED));
+  const menuNm = useSelector(getState(MENU_NM));
   const navigate = useNavigate();
 
   const drawerWidth = open ? 260 : 0;
@@ -90,7 +92,10 @@ const SideBar = () => {
             <ListItem key={text} disablePadding>
               <ListItemButton onClick={() => goMenu(text)}>
                 <ListItemIcon style={{ minWidth: 25 }}>
-                  <Brightness1Icon fontSize="small" />
+                  <Brightness1Icon
+                    fontSize="small"
+                    color={menuNm === text ? "primary" : "disabled"}
+                  />
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItemButton>

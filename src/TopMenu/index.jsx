@@ -2,12 +2,16 @@ import { AppBar, IconButton, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Typography from "@mui/material/Typography";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  setToggle,
-  getState as getTitle,
-  SIDEBAR_OPEN,
-  TITLE,
-} from "./stateSlice";
+import { setToggle, getState, SIDEBAR_OPEN, MENU_NM } from "./stateSlice";
+
+const getTitle = (menuNm) => {
+  switch (menuNm) {
+    case "Exchange Rate":
+      return "Exchange Rate";
+    default:
+      return menuNm;
+  }
+};
 
 const TopMenu = () => {
   const dispatch = useDispatch();
@@ -15,7 +19,8 @@ const TopMenu = () => {
   const handleDrawerOpen = () => {
     dispatch(setToggle({ type: SIDEBAR_OPEN }));
   };
-  const title = useSelector(getTitle(TITLE));
+  const menuNm = useSelector(getState(MENU_NM));
+  const title = getTitle(menuNm);
 
   return (
     <AppBar positon="static">

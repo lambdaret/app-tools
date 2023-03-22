@@ -24,7 +24,7 @@ import {
   AMOUNT,
   PLACE,
 } from "./stateSlice";
-import { TITLE, setState as setTitle } from "../TopMenu/stateSlice";
+import { MENU_NM, setState as setMenuState } from "../TopMenu/stateSlice";
 import ButtonGetData from "./ButtonGetData";
 import DataBox from "./DataBox";
 import UrlBox from "./UrlBox";
@@ -82,7 +82,7 @@ const ExchangeRate = () => {
   };
 
   useEffect(() => {
-    dispatch(setTitle({ type: TITLE, value: "Exchange Rate" }));
+    dispatch(setMenuState({ type: MENU_NM, value: "Exchange Rate" }));
   }, [dispatch]);
 
   const symbols = fetchSymbol.read();
