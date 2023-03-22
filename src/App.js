@@ -4,6 +4,9 @@ import TopMenu from "./TopMenu";
 import { Box } from "@mui/system";
 import { Toolbar } from "@mui/material";
 import SideBar from "./SideBar";
+import Container from "@mui/material/Container";
+import ScrollTop from "./components/ScrollTop";
+
 // import { useSelector } from "react-redux";
 // import { getState, SIDEBAR_OPEN, SIDEBAR_PINED } from "./TopMenu/stateSlice";
 
@@ -36,8 +39,8 @@ function App() {
               marginLeft: 0,
             }}
           >
-            <Toolbar />
-            <div style={{ marginTop: 10 }}>
+            <Toolbar id="back-to-top-anchor" />
+            <Container style={{ marginTop: 10 }}>
               <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route
@@ -48,7 +51,12 @@ function App() {
                 <Route exact path="/redux-test/" element={<ReduxTest />} />
                 <Route exact path="/redux-test2/" element={<ReduxTest2 />} />
               </Routes>
-            </div>
+            </Container>
+            <ScrollTop anchorName="back-to-top-anchor">
+              {/* <Fab size="small" aria-label="scroll back to top">
+                <KeyboardArrowUpIcon />
+              </Fab> */}
+            </ScrollTop>
           </Box>
         </Box>
       </HashRouter>
