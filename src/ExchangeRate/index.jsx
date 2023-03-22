@@ -87,7 +87,6 @@ const ExchangeRate = () => {
   const symbols = fetchSymbol.read();
   return (
     <div style={{ padding: 5 }}>
-      <h3 style={{ marginTop: 0 }}>Exchange Rate</h3>
       <Grid container spacing={1}>
         <Grid item xs={4}>
           <DateBox
