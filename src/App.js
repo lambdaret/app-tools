@@ -4,8 +4,8 @@ import TopMenu from "./TopMenu";
 import { Box } from "@mui/system";
 import { Toolbar } from "@mui/material";
 import SideBar from "./SideBar";
-import { useSelector } from "react-redux";
-import { getState, SIDEBAR_OPEN, SIDEBAR_PINED } from "./TopMenu/stateSlice";
+// import { useSelector } from "react-redux";
+// import { getState, SIDEBAR_OPEN, SIDEBAR_PINED } from "./TopMenu/stateSlice";
 
 const Home = React.lazy(() => import("./Home"));
 const ExchangeRate = React.lazy(() => import("./ExchangeRate"));
@@ -13,8 +13,8 @@ const ReduxTest = React.lazy(() => import("./ReduxTest"));
 const ReduxTest2 = React.lazy(() => import("./ReduxTest2"));
 
 function App() {
-  const open = useSelector(getState(SIDEBAR_OPEN));
-  const pined = useSelector(getState(SIDEBAR_PINED));
+  // const open = useSelector(getState(SIDEBAR_OPEN));
+  // const pined = useSelector(getState(SIDEBAR_PINED));
 
   return (
     <Suspense fallback={<div>Loading ...</div>}>
@@ -32,7 +32,8 @@ function App() {
               padding: 0,
               width: "100%",
               height: "100%",
-              marginLeft: open && !pined ? -260 : 0,
+              // marginLeft: open && !pined ? -260 : 0,
+              marginLeft: 0,
             }}
           >
             <Toolbar />

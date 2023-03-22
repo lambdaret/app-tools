@@ -65,7 +65,8 @@ const SideBar = () => {
       // variant="persistent"
       // variant="temporary"
       // variant="permanent"
-      variant={"permanent"}
+      variant={pined ? "persistent" : "temporary"}
+      ModalProps={{ keepMounted: true }}
       anchor="left"
       open={open}
       onClose={handleDrawerClose}
