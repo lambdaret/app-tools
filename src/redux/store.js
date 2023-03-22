@@ -7,9 +7,11 @@ import thunk from "redux-thunk";
 import counterReducer from "../ReduxTest/counterSlice";
 import stateReducer from "../ReduxTest2/stateSlice";
 import exchangeRateReducer from "../ExchangeRate/stateSlice";
+import menuReducer from "../TopMenu/stateSlice";
 
 const reducers = combineReducers({
   exchangeRate: exchangeRateReducer,
+  menu: menuReducer,
   counter: counterReducer,
   exStateReducer: stateReducer,
 });

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Main() {
+function Tools() {
   return (
     <div>
       <div>
@@ -10,4 +10,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Tools;
