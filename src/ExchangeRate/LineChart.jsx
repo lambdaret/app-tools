@@ -51,6 +51,7 @@ const LineChart = () => {
       {data && (
         <Plot
           data={getData(data.read())}
+          useResizeHandler={true}
           layout={{
             showlegend: true,
             autosize: true,
@@ -59,9 +60,11 @@ const LineChart = () => {
               tickformat: "%Y-%m-%d",
               tickangle: -45,
             },
-            width: "100%",
-            height: "auto",
             title: `Exchange Rate - Base: ${data.read()["base"]}`,
+          }}
+          style={{
+            width: "100%",
+            height: "100%",
           }}
         />
       )}
