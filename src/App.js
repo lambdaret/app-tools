@@ -7,19 +7,12 @@ import SideBar from "./SideBar";
 import Container from "@mui/material/Container";
 import ScrollTop from "./components/ScrollTop";
 
-// import { useSelector } from "react-redux";
-// import { getState, SIDEBAR_OPEN } from "./TopMenu/stateSlice";
-// import { getState, SIDEBAR_OPEN, SIDEBAR_PINED } from "./TopMenu/stateSlice";
-
 const Home = React.lazy(() => import("./Home"));
 const ExchangeRate = React.lazy(() => import("./ExchangeRate"));
 const ReduxTest = React.lazy(() => import("./ReduxTest"));
 const ReduxTest2 = React.lazy(() => import("./ReduxTest2"));
 
 function App(props) {
-  // const open = useSelector(getState(SIDEBAR_OPEN));
-  // const pined = useSelector(getState(SIDEBAR_PINED));
-
   return (
     <Suspense fallback={<div>Loading ...</div>}>
       <HashRouter>
@@ -61,11 +54,7 @@ function App(props) {
                 <Route exact path="/redux-test2/" element={<ReduxTest2 />} />
               </Routes>
             </Container>
-            <ScrollTop anchorName="back-to-top-anchor" {...props}>
-              {/* <Fab size="small" aria-label="scroll back to top">
-                <KeyboardArrowUpIcon />
-              </Fab> */}
-            </ScrollTop>
+            <ScrollTop anchorName="back-to-top-anchor" {...props}></ScrollTop>
           </Box>
         </Box>
       </HashRouter>

@@ -14,6 +14,7 @@ import {
   PLACE,
   DOWNLOAD_URLS,
   DOWNLOAD_DATA,
+  JSON_URL,
 } from "./stateSlice";
 
 const ButtonGetData = () => {
@@ -34,6 +35,7 @@ const ButtonGetData = () => {
   const handleGetData = () => {
     setSelected(DOWNLOAD_URLS, []);
     setSelected(DOWNLOAD_DATA, "");
+    setSelected(JSON_URL, "");
 
     const params = {
       start_date: selectedStartDate || "",
@@ -50,6 +52,11 @@ const ButtonGetData = () => {
     const url = "https://api.exchangerate.host/timeseries";
     const ext = selectedFormat ? selectedFormat : "json";
     const downloadUrl = `${url}?${new URLSearchParams(params).toString()}`;
+    const jsonUrl = `${url}?${new URLSearchParams({
+      ...params,
+      format: "",
+    }).toString()}`;
+    setSelected(JSON_URL, jsonUrl);
     setSelected(DOWNLOAD_URLS, [downloadUrl]);
 
     if (ext === "json") {

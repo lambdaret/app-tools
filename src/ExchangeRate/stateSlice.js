@@ -11,6 +11,7 @@ export const PLACE = "PLACE";
 export const SOURCE = "SOURCE";
 export const DOWNLOAD_URLS = "DOWNLOAD_URLS";
 export const DOWNLOAD_DATA = "DOWNLOAD_DATA";
+export const JSON_URL = "JSON_URL";
 
 const now = format(new Date(), "yyyy-MM-dd");
 
@@ -26,6 +27,7 @@ export const stateSlice = createSlice({
       AMOUNT: "",
       PLACE: "",
       SOURCE: null,
+      JSON_URL: null,
     },
   },
   reducers: {

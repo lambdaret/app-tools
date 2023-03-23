@@ -28,6 +28,7 @@ import { MENU_NM, setState as setMenuState } from "../TopMenu/stateSlice";
 import ButtonGetData from "./ButtonGetData";
 import DataBox from "./DataBox";
 import UrlBox from "./UrlBox";
+import LineChart from "./LineChart";
 
 const fetchSymbol = fetchData("https://api.exchangerate.host/symbols");
 
@@ -86,6 +87,7 @@ const ExchangeRate = () => {
   }, [dispatch]);
 
   const symbols = fetchSymbol.read();
+
   return (
     <div style={{ padding: 0 }}>
       <Grid container spacing={1}>
@@ -150,6 +152,9 @@ const ExchangeRate = () => {
           <Box sx={{ display: "flex" }}>
             <ButtonGetData />
           </Box>
+        </Grid>
+        <Grid item xs={12}>
+          <LineChart style={{ width: "100%" }} />
         </Grid>
         <Grid item xs={12}>
           <DataBox />
