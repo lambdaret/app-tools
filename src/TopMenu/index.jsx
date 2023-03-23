@@ -35,7 +35,12 @@ const TopMenu = () => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography
+          variant="h6"
+          component="div"
+          sx={{ flexGrow: 1 }}
+          style={{ marginLeft: 200 }}
+        >
           {title}
         </Typography>
       </Toolbar>
