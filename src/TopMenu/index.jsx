@@ -39,7 +39,7 @@ const TopMenu = () => {
           variant="h6"
           component="div"
           sx={{ flexGrow: 1 }}
-          style={{ marginLeft: 200 }}
+          align="right"
         >
           {title}
         </Typography>

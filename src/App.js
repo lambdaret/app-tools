@@ -35,7 +35,6 @@ function App(props) {
               padding: 0,
               width: "100%",
               height: "100%",
-              // marginLeft: open && !pined ? -260 : 0,
               marginLeft: 0,
             }}
           >
