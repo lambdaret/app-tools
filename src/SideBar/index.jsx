@@ -30,6 +30,7 @@ const SideBar = () => {
   const navigate = useNavigate();
 
   const drawerWidth = open ? 180 : 0;
+  // const drawerWidth = open ? "29%" : 0;
 
   const handleDrawerClose = (e) => {
     dispatch(setState({ type: SIDEBAR_OPEN, value: false }));

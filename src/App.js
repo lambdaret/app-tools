@@ -8,6 +8,7 @@ import Container from "@mui/material/Container";
 import ScrollTop from "./components/ScrollTop";
 
 // import { useSelector } from "react-redux";
+// import { getState, SIDEBAR_OPEN } from "./TopMenu/stateSlice";
 // import { getState, SIDEBAR_OPEN, SIDEBAR_PINED } from "./TopMenu/stateSlice";
 
 const Home = React.lazy(() => import("./Home"));
@@ -26,8 +27,9 @@ function App(props) {
           <Box sx={{ flexGrow: 1 }}>
             <TopMenu />
           </Box>
-          <Box component="nav"></Box>
-          <SideBar />
+          <Box component="nav">
+            <SideBar />
+          </Box>
           <Box
             component="main"
             sx={{ p: 0 }}
