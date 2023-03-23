@@ -30,16 +30,24 @@ function App(props) {
           <SideBar />
           <Box
             component="main"
-            sx={{ p: 3 }}
+            sx={{ p: 0 }}
             style={{
-              padding: 0,
+              padding: 5,
               width: "100%",
               height: "100%",
-              marginLeft: 0,
+              margin: 0,
             }}
           >
             <Toolbar id="back-to-top-anchor" />
-            <Container style={{ marginTop: 10 }}>
+            <Container
+              style={{
+                padding: 0,
+                marginLeft: 0,
+                marginRight: 0,
+                marginBottom: 0,
+                marginTop: 10,
+              }}
+            >
               <Routes>
                 <Route exact path="/" element={<Home />} />
                 <Route

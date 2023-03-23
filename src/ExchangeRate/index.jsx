@@ -87,26 +87,26 @@ const ExchangeRate = () => {
 
   const symbols = fetchSymbol.read();
   return (
-    <div style={{ padding: 5 }}>
+    <div style={{ padding: 0 }}>
       <Grid container spacing={1}>
-        <Grid item xs={4}>
+        <Grid item xs="auto" style={{ width: "36%" }}>
           <DateBox
             label="Start Date"
             type={START_DATE}
             onChange={handleChangeStartDate}
           />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs="auto" style={{ width: "36%" }}>
           <DateBox
             label="End Date"
             type={END_DATE}
             onChange={handleChangeEndDate}
           />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs="auto" style={{ width: "28%" }}>
           <FormatBox onChange={handleChangeFormat} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs="auto" style={{ width: "50%" }}>
           <Suspense fallback={<div>Loading ...</div>}>
             <BaseBox
               label="Base"
@@ -115,7 +115,7 @@ const ExchangeRate = () => {
             />
           </Suspense>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs="auto" style={{ width: "50%" }}>
           <Suspense fallback={<div>Loading ...</div>}>
             <SymbolBox
               label="Symbols"
@@ -125,7 +125,7 @@ const ExchangeRate = () => {
             />
           </Suspense>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs="auto" style={{ width: "50%" }}>
           <TextBox
             label="Amount"
             type={AMOUNT}
@@ -133,7 +133,7 @@ const ExchangeRate = () => {
             onChange={handleChangeAmount}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs="auto" style={{ width: "50%" }}>
           <TextBox
             label="Place"
             type={PLACE}
