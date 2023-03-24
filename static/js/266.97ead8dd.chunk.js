@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkapp_tools=self.webpackChunkapp_tools||[]).push([[266],{1266:function(e,n,t){t.r(n);var a=t(1087),c=t(2791),r=t(9434),s=t(2210),u=t(3329);n.default=function(){var e=(0,r.I0)();return(0,c.useEffect)((function(){e((0,s.IW)({type:s.q,value:"Home"}))}),[e]),(0,u.jsx)("div",{children:(0,u.jsx)("div",{children:(0,u.jsx)(a.rU,{to:"/exchange-rate/",children:"Exchange Rate"})})})}}}]);
+//# sourceMappingURL=266.97ead8dd.chunk.js.map

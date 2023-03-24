@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkapp_tools=self.webpackChunkapp_tools||[]).push([[316],{3316:function(n,t,e){e.r(t);var i=e(9434),r=e(9220),s=e(3329);t.default=function(){var n=(0,i.v9)(r.Hm),t=(0,i.I0)();return(0,s.jsxs)("div",{children:[(0,s.jsx)("h1",{children:"Redux Test"}),n&&(0,s.jsx)("div",{style:{width:500,height:500},children:n}),(0,s.jsx)("button",{onClick:function(){return t((0,r.nP)())},children:"\uc99d\uac00"}),(0,s.jsx)("button",{onClick:function(){return t((0,r.Mj)())},children:"\uac10\uc18c"})]})}}}]);
-//# sourceMappingURL=316.c3286929.chunk.js.map
