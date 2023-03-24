@@ -4,7 +4,12 @@ import { useSelector } from "react-redux";
 import { getState, JSON_URL } from "./stateSlice";
 import fetchData from "../api/fetchData";
 
-const getData = ({ rates }) => {
+const getData = (chartData) => {
+  if (chartData === undefined) {
+    return [];
+  }
+  const { rates } = chartData;
+
   const dates = Object.keys(rates);
   const symbol_x = {};
   const symbol_y = {};
@@ -47,27 +52,30 @@ const LineChart = () => {
     }
   }, [jsonUrl]);
   return (
-    <Suspense fallback={<div>Loading ...</div>}>
-      {data && (
-        <Plot
-          data={getData(data.read())}
-          useResizeHandler={true}
-          layout={{
-            showlegend: true,
-            autosize: true,
-            xaxis: {
-              type: "date",
-              tickformat: "%Y-%m-%d",
-              tickangle: -45,
-            },
-            title: `Exchange Rate - Base: ${data.read()["base"]}`,
-          }}
-          style={{
-            width: "100%",
-            height: "100%",
-          }}
-        />
-      )}
+    <Suspense fallback={<div>Loading ...6</div>}>
+      <Plot
+        data={getData(data?.read())}
+        useResizeHandler={true}
+        layout={{
+          showlegend: true,
+          autosize: true,
+          dragmode: "pan",
+          xaxis: {
+            type: "date",
+            tickformat: "%Y-%m-%d",
+            tickangle: -45,
+          },
+          title: `Exchange Rate - Base: ${data?.read()["base"]}`,
+        }}
+        config={{
+          displayModeBar: true,
+          displaylogo: false,
+        }}
+        style={{
+          width: "100%",
+          height: "100%",
+        }}
+      />
     </Suspense>
   );
 };

@@ -81,12 +81,11 @@ const ExchangeRate = () => {
   const handleClearPlace = (event) => {
     setSelected(PLACE, "");
   };
+  const symbols = fetchSymbol.read();
 
   useEffect(() => {
     dispatch(setMenuState({ type: MENU_NM, value: "Exchange Rate" }));
   }, [dispatch]);
-
-  const symbols = fetchSymbol.read();
 
   return (
     <div style={{ padding: 0 }}>
@@ -109,7 +108,7 @@ const ExchangeRate = () => {
           <FormatBox onChange={handleChangeFormat} />
         </Grid>
         <Grid item xs="auto" style={{ width: "50%" }}>
-          <Suspense fallback={<div>Loading ...</div>}>
+          <Suspense fallback={<div>Loading ...3</div>}>
             <BaseBox
               label="Base"
               options={symbols}
@@ -118,7 +117,7 @@ const ExchangeRate = () => {
           </Suspense>
         </Grid>
         <Grid item xs="auto" style={{ width: "50%" }}>
-          <Suspense fallback={<div>Loading ...</div>}>
+          <Suspense fallback={<div>Loading ...4</div>}>
             <SymbolBox
               label="Symbols"
               options={symbols}
@@ -144,7 +143,7 @@ const ExchangeRate = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <Suspense fallback={<div>Loading ...</div>}>
+          <Suspense fallback={<div>Loading ...5</div>}>
             <SourceBox onChange={handleChangeSource} />
           </Suspense>
         </Grid>
@@ -154,7 +153,9 @@ const ExchangeRate = () => {
           </Box>
         </Grid>
         <Grid item xs={12}>
-          <LineChart style={{ width: "100%" }} />
+          <Suspense fallback={<div>Loading ...7</div>}>
+            <LineChart style={{ width: "100%" }} />
+          </Suspense>
         </Grid>
         <Grid item xs={12}>
           <DataBox />

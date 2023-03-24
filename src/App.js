@@ -14,7 +14,7 @@ const ReduxTest2 = React.lazy(() => import("./ReduxTest2"));
 
 function App(props) {
   return (
-    <Suspense fallback={<div>Loading ...</div>}>
+    <Suspense fallback={<div>Loading ...1</div>}>
       <HashRouter>
         <Box sx={{ display: "flex" }}>
           <Box sx={{ flexGrow: 1 }}>
