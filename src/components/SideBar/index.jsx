@@ -20,7 +20,7 @@ import {
   SIDEBAR_OPEN,
   SIDEBAR_PINED,
   MENU_NM,
-} from "../TopMenu/stateSlice";
+} from "components/TopMenu/stateSlice";
 
 const SideBar = () => {
   const dispatch = useDispatch();

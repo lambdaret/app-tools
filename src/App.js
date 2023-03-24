@@ -1,16 +1,14 @@
 import React, { Suspense } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
-import TopMenu from "./TopMenu";
 import { Box } from "@mui/system";
 import { Toolbar } from "@mui/material";
-import SideBar from "./SideBar";
+import TopMenu from "components/TopMenu";
 import Container from "@mui/material/Container";
-import ScrollTop from "./components/ScrollTop";
+import SideBar from "components/SideBar";
+import ScrollTop from "components/ScrollTop";
 
-const Home = React.lazy(() => import("./Home"));
-const ExchangeRate = React.lazy(() => import("./ExchangeRate"));
-const ReduxTest = React.lazy(() => import("./ReduxTest"));
-const ReduxTest2 = React.lazy(() => import("./ReduxTest2"));
+const Home = React.lazy(() => import("pages/Home"));
+const ExchangeRate = React.lazy(() => import("pages/ExchangeRate"));
 
 function App(props) {
   return (
@@ -50,8 +48,6 @@ function App(props) {
                   path="/exchange-rate/"
                   element={<ExchangeRate />}
                 />
-                <Route exact path="/redux-test/" element={<ReduxTest />} />
-                <Route exact path="/redux-test2/" element={<ReduxTest2 />} />
               </Routes>
             </Container>
             <ScrollTop anchorName="back-to-top-anchor" {...props}></ScrollTop>

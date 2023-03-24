@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect } from "react";
-import fetchData from "../api/fetchData";
+import fetchData from "api/fetchData";
 
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -24,7 +24,10 @@ import {
   AMOUNT,
   PLACE,
 } from "./stateSlice";
-import { MENU_NM, setState as setMenuState } from "../TopMenu/stateSlice";
+import {
+  MENU_NM,
+  setState as setMenuState,
+} from "components/TopMenu/stateSlice";
 import ButtonGetData from "./ButtonGetData";
 import DataBox from "./DataBox";
 import UrlBox from "./UrlBox";

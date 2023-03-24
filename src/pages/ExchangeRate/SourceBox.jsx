@@ -1,5 +1,5 @@
 import React from "react";
-import fetchData from "../api/fetchData";
+import fetchData from "api/fetchData";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { useSelector } from "react-redux";

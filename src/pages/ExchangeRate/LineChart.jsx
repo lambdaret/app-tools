@@ -2,7 +2,7 @@ import React, { Suspense, useEffect, useState } from "react";
 import Plot from "react-plotly.js";
 import { useSelector } from "react-redux";
 import { getState, JSON_URL } from "./stateSlice";
-import fetchData from "../api/fetchData";
+import fetchData from "api/fetchData";
 
 const getData = (chartData) => {
   if (chartData === undefined) {
