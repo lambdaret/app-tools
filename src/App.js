@@ -41,14 +41,16 @@ function App(props) {
                 marginTop: 10,
               }}
             >
-              <Routes>
-                <Route exact path="/" element={<Home />} />
-                <Route
-                  exact
-                  path="/exchange-rate/"
-                  element={<ExchangeRate />}
-                />
-              </Routes>
+              <Suspense fallback={<div>Loading ...3</div>}>
+                <Routes>
+                  <Route exact path="/" element={<Home />} />
+                  <Route
+                    exact
+                    path="/exchange-rate/"
+                    element={<ExchangeRate />}
+                  />
+                </Routes>
+              </Suspense>
             </Container>
             <ScrollTop anchorName="back-to-top-anchor" {...props}></ScrollTop>
           </Box>
