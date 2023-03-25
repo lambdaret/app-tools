@@ -2,8 +2,8 @@ import React from "react";
 import Button from "@mui/material/Button";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  setState,
-  getState,
+  setStateExchangeRate,
+  getStateExchangeRate,
   START_DATE,
   END_DATE,
   FORMAT,
@@ -15,22 +15,22 @@ import {
   DOWNLOAD_URLS,
   DOWNLOAD_DATA,
   JSON_URL,
-} from "./stateSlice";
+} from "./exchangeRateSlice";
 
 const ButtonGetData = () => {
   const dispatch = useDispatch();
   const setSelected = (nm, value) => {
-    dispatch(setState({ type: nm, value: value }));
+    dispatch(setStateExchangeRate(nm, value));
   };
 
-  const selectedStartDate = useSelector(getState(START_DATE));
-  const selectedEndDate = useSelector(getState(END_DATE));
-  const selectedFormat = useSelector(getState(FORMAT));
-  const selectedBase = useSelector(getState(BASE));
-  const selectedSource = useSelector(getState(SOURCE));
-  const selectedSymbols = useSelector(getState(SYMBOLS));
-  const selectedAmount = useSelector(getState(AMOUNT));
-  const selectedPlace = useSelector(getState(PLACE));
+  const selectedStartDate = useSelector(getStateExchangeRate(START_DATE));
+  const selectedEndDate = useSelector(getStateExchangeRate(END_DATE));
+  const selectedFormat = useSelector(getStateExchangeRate(FORMAT));
+  const selectedBase = useSelector(getStateExchangeRate(BASE));
+  const selectedSource = useSelector(getStateExchangeRate(SOURCE));
+  const selectedSymbols = useSelector(getStateExchangeRate(SYMBOLS));
+  const selectedAmount = useSelector(getStateExchangeRate(AMOUNT));
+  const selectedPlace = useSelector(getStateExchangeRate(PLACE));
 
   const handleGetData = () => {
     setSelected(DOWNLOAD_URLS, []);

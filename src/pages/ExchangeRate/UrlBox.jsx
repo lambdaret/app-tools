@@ -1,10 +1,10 @@
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
 import { useSelector } from "react-redux";
-import { getState, DOWNLOAD_URLS } from "./stateSlice";
+import { getStateExchangeRate, DOWNLOAD_URLS } from "./exchangeRateSlice";
 
 const UrlBox = () => {
-  const downloadUrls = useSelector(getState(DOWNLOAD_URLS));
+  const downloadUrls = useSelector(getStateExchangeRate(DOWNLOAD_URLS));
   return downloadUrls?.map((link) => (
     <Grid item xs={12} key={link}>
       <Link

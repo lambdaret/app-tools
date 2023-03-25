@@ -1,9 +1,9 @@
 import TextField from "@mui/material/TextField";
 import { useSelector } from "react-redux";
-import { getState, DOWNLOAD_DATA } from "./stateSlice";
+import { getStateExchangeRate, DOWNLOAD_DATA } from "./exchangeRateSlice";
 
 const DataBox = () => {
-  const value = useSelector(getState(DOWNLOAD_DATA));
+  const value = useSelector(getStateExchangeRate(DOWNLOAD_DATA));
   return (
     <TextField
       label="Rate"

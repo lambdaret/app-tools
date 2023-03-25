@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
-import { getState, FORMAT } from "./stateSlice";
+import { getStateExchangeRate, FORMAT } from "./exchangeRateSlice";
 
 const isOptionEqualToValue = (option, value) => {
   if (value === "") {
@@ -13,7 +13,7 @@ const isOptionEqualToValue = (option, value) => {
 };
 
 const FormatBox = ({ onChange }) => {
-  const selectedFormat = useSelector(getState(FORMAT));
+  const selectedFormat = useSelector(getStateExchangeRate(FORMAT));
   return (
     <Autocomplete
       onChange={onChange}

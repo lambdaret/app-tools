@@ -3,7 +3,7 @@ import fetchData from "api/fetchData";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { useSelector } from "react-redux";
-import { getState, SOURCE } from "./stateSlice";
+import { getStateExchangeRate, SOURCE } from "./exchangeRateSlice";
 
 const fetchSource1 = fetchData("https://api.exchangerate.host/sources");
 const fetchSource2 = fetchData(
@@ -47,7 +47,7 @@ const isOptionEqualToValue = (option, value) => {
 
 const SourceBox = ({ onChange }) => {
   const sources = getSource();
-  const selectedSource = useSelector(getState(SOURCE));
+  const selectedSource = useSelector(getStateExchangeRate(SOURCE));
   return (
     <Autocomplete
       autoHighlight

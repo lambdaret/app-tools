@@ -2,7 +2,7 @@ import React from "react";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { useSelector } from "react-redux";
-import { getState, BASE } from "./stateSlice";
+import { getStateExchangeRate, BASE } from "./exchangeRateSlice";
 const filterOptions = createFilterOptions({
   matchFrom: "any",
   stringify: (option) => `${option?.code} ${option?.description}`,
@@ -16,7 +16,7 @@ const isOptionEqualToValue = (option, value) => {
 };
 
 const BaseBox = ({ options, label, onChange }) => {
-  const selectedBase = useSelector(getState(BASE));
+  const selectedBase = useSelector(getStateExchangeRate(BASE));
   return (
     <Autocomplete
       onChange={onChange}

@@ -14,34 +14,34 @@ import Brightness1Icon from "@mui/icons-material/Brightness1";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
-  setState,
-  setToggle,
-  getState,
+  setStateTopBar,
+  setToggleTopBar,
+  getStateTopBar,
   SIDEBAR_OPEN,
   SIDEBAR_PINED,
   MENU_NM,
-} from "components/TopMenu/stateSlice";
+} from "components/TopBar/topBarSlice";
 
 const SideBar = () => {
   const dispatch = useDispatch();
-  const open = useSelector(getState(SIDEBAR_OPEN));
-  const pined = useSelector(getState(SIDEBAR_PINED));
-  const menuNm = useSelector(getState(MENU_NM));
+  const open = useSelector(getStateTopBar(SIDEBAR_OPEN));
+  const pined = useSelector(getStateTopBar(SIDEBAR_PINED));
+  const menuNm = useSelector(getStateTopBar(MENU_NM));
   const navigate = useNavigate();
 
   const drawerWidth = open ? 180 : 0;
   // const drawerWidth = open ? "29%" : 0;
 
   const handleDrawerClose = (e) => {
-    dispatch(setState({ type: SIDEBAR_OPEN, value: false }));
+    dispatch(setStateTopBar(SIDEBAR_OPEN, false));
   };
   const handleDrawerCloseUnPined = (e) => {
     if (!pined) {
-      dispatch(setState({ type: SIDEBAR_OPEN, value: false }));
+      dispatch(setStateTopBar(SIDEBAR_OPEN, false));
     }
   };
   const handleSidebarPined = (e) => {
-    dispatch(setToggle({ type: SIDEBAR_PINED }));
+    dispatch(setToggleTopBar(SIDEBAR_PINED));
   };
   const goMenu = (menuNm) => {
     switch (menuNm) {

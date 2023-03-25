@@ -31,7 +31,7 @@ export const stateSlice = createSlice({
     },
   },
   reducers: {
-    setState: (state, action) => {
+    setStateExchangeRate: (state, action) => {
       const payload = action.payload;
       if (payload) {
         state.value[payload.type] = payload.value;
@@ -40,8 +40,12 @@ export const stateSlice = createSlice({
   },
 });
 
-export const { setState } = stateSlice.actions;
+// export const { setState } = stateSlice.actions;
+export const setStateExchangeRate = (type, action) => {
+  return stateSlice.actions.setStateExchangeRate({ type: type, value: action });
+};
 
-export const getState = (type) => (state) => state.exchangeRate.value[type];
+export const getStateExchangeRate = (type) => (state) =>
+  state.exchangeRate.value[type];
 
 export default stateSlice.reducer;

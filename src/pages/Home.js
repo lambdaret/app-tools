@@ -1,15 +1,12 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import {
-  MENU_NM,
-  setState as setMenuState,
-} from "components/TopMenu/stateSlice";
+import { MENU_NM, setStateTopBar } from "components/TopBar/topBarSlice";
 
 function Home() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setMenuState({ type: MENU_NM, value: "Home" }));
+    dispatch(setStateTopBar(MENU_NM, "Home"));
   }, [dispatch]);
 
   return (

@@ -5,7 +5,7 @@ export const SIDEBAR_PINED = "SIDEBAR_PINED";
 export const MENU_NM = "MENU_NM";
 
 export const stateSlice = createSlice({
-  name: "menu",
+  name: "topBar",
   initialState: {
     value: {
       SIDEBAR_OPEN: false,
@@ -15,13 +15,13 @@ export const stateSlice = createSlice({
     },
   },
   reducers: {
-    setState: (state, action) => {
+    setStateTopBar: (state, action) => {
       const payload = action.payload;
       if (payload) {
         state.value[payload.type] = payload.value;
       }
     },
-    setToggle: (state, action) => {
+    setToggleTopBar: (state, action) => {
       const payload = action.payload;
       if (payload) {
         state.value[payload.type] = !state.value[payload.type];
@@ -30,8 +30,13 @@ export const stateSlice = createSlice({
   },
 });
 
-export const { setState, setToggle } = stateSlice.actions;
+export const setStateTopBar = (type, action) => {
+  return stateSlice.actions.setStateTopBar({ type: type, value: action });
+};
+export const setToggleTopBar = (type) => {
+  return stateSlice.actions.setToggleTopBar({ type: type });
+};
 
-export const getState = (type) => (state) => state.menu.value[type];
+export const getStateTopBar = (type) => (state) => state.topBar.value[type];
 
 export default stateSlice.reducer;

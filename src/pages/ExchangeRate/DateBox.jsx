@@ -1,10 +1,10 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 import { useSelector } from "react-redux";
-import { getState } from "./stateSlice";
+import { getStateExchangeRate } from "./exchangeRateSlice";
 
 const DateBox = ({ label, type, onChange }) => {
-  const selectedDate = useSelector(getState(type));
+  const selectedDate = useSelector(getStateExchangeRate(type));
   return (
     <TextField
       label={label}

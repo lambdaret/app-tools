@@ -14,7 +14,7 @@ import TextBox from "./TextBox";
 
 import { useDispatch } from "react-redux";
 import {
-  setState,
+  setStateExchangeRate,
   START_DATE,
   END_DATE,
   FORMAT,
@@ -23,11 +23,8 @@ import {
   SYMBOLS,
   AMOUNT,
   PLACE,
-} from "./stateSlice";
-import {
-  MENU_NM,
-  setState as setMenuState,
-} from "components/TopMenu/stateSlice";
+} from "./exchangeRateSlice";
+import { MENU_NM, setStateTopBar } from "components/TopBar/topBarSlice";
 import ButtonGetData from "./ButtonGetData";
 import DataBox from "./DataBox";
 import UrlBox from "./UrlBox";
@@ -39,7 +36,7 @@ const ExchangeRate = () => {
   const dispatch = useDispatch();
 
   const setSelected = (nm, value) => {
-    dispatch(setState({ type: nm, value: value }));
+    dispatch(setStateExchangeRate(nm, value));
   };
 
   const handleChangeStartDate = (event) => {
@@ -87,7 +84,7 @@ const ExchangeRate = () => {
   const symbols = fetchSymbol.read();
 
   useEffect(() => {
-    dispatch(setMenuState({ type: MENU_NM, value: "Exchange Rate" }));
+    dispatch(setStateTopBar(MENU_NM, "Exchange Rate"));
   }, [dispatch]);
 
   return (

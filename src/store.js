@@ -4,12 +4,12 @@ import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
 import thunk from "redux-thunk";
 
-import exchangeRateReducer from "pages/ExchangeRate/stateSlice";
-import menuReducer from "components/TopMenu/stateSlice";
+import exchangeRateReducer from "pages/ExchangeRate/exchangeRateSlice";
+import topBarReducer from "components/TopBar/topBarSlice";
 
 const reducers = combineReducers({
   exchangeRate: exchangeRateReducer,
-  menu: menuReducer,
+  topBar: topBarReducer,
 });
 
 const persistConfig = {

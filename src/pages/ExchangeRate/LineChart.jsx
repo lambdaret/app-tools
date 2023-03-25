@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useState } from "react";
 import Plot from "react-plotly.js";
 import { useSelector } from "react-redux";
-import { getState, JSON_URL } from "./stateSlice";
+import { getStateExchangeRate, JSON_URL } from "./exchangeRateSlice";
 import fetchData from "api/fetchData";
 
 const getData = (chartData) => {
@@ -33,6 +33,7 @@ const getData = (chartData) => {
         y: Object.values(symbol_y[symbol]),
         type: "scatter",
         name: symbol,
+        visible: symbol === symbols[0] ? true : "legendonly",
       };
     });
     return data;
@@ -45,7 +46,7 @@ const fetchChart = (jsonUrl) => fetchData(jsonUrl);
 
 const LineChart = () => {
   const [data, setData] = useState();
-  const jsonUrl = useSelector(getState(JSON_URL));
+  const jsonUrl = useSelector(getStateExchangeRate(JSON_URL));
   useEffect(() => {
     if (jsonUrl) {
       setData(fetchChart(jsonUrl));

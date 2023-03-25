@@ -5,7 +5,7 @@ import Checkbox from "@mui/material/Checkbox";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import { useSelector } from "react-redux";
-import { getState, SYMBOLS } from "./stateSlice";
+import { getStateExchangeRate, SYMBOLS } from "./exchangeRateSlice";
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
@@ -21,7 +21,7 @@ const isOptionEqualToValue = (option, value) => {
   return option?.code === value?.code;
 };
 const SymbolBox = ({ options, label, onChange }) => {
-  const selectedSymbols = useSelector(getState(SYMBOLS));
+  const selectedSymbols = useSelector(getStateExchangeRate(SYMBOLS));
   return (
     <Autocomplete
       multiple

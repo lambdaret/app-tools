@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { Box } from "@mui/system";
 import { Toolbar } from "@mui/material";
-import TopMenu from "components/TopMenu";
+import TopBar from "components/TopBar";
 import Container from "@mui/material/Container";
 import SideBar from "components/SideBar";
 import ScrollTop from "components/ScrollTop";
@@ -16,7 +16,7 @@ function App(props) {
       <HashRouter>
         <Box sx={{ display: "flex" }}>
           <Box sx={{ flexGrow: 1 }}>
-            <TopMenu />
+            <TopBar />
           </Box>
           <Box component="nav">
             <SideBar />
