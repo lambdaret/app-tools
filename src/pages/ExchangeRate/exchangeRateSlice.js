@@ -12,6 +12,8 @@ export const SOURCE = "SOURCE";
 export const DOWNLOAD_URLS = "DOWNLOAD_URLS";
 export const DOWNLOAD_DATA = "DOWNLOAD_DATA";
 export const JSON_URL = "JSON_URL";
+export const JSON_PARAM = "JSON_PARAM";
+export const JSON_DATA = "JSON_DATA";
 
 const now = format(new Date(), "yyyy-MM-dd");
 
@@ -28,6 +30,8 @@ export const stateSlice = createSlice({
       PLACE: "",
       SOURCE: null,
       JSON_URL: null,
+      JSON_PARAM: null,
+      JSON_DATA: [],
     },
   },
   reducers: {

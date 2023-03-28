@@ -86,7 +86,6 @@ const ExchangeRate = () => {
   useEffect(() => {
     dispatch(setStateTopBar(MENU_NM, "Exchange Rate"));
   }, [dispatch]);
-
   return (
     <div style={{ padding: 0 }}>
       <Grid container spacing={1}>
@@ -108,7 +107,7 @@ const ExchangeRate = () => {
           <FormatBox onChange={handleChangeFormat} />
         </Grid>
         <Grid item xs="auto" style={{ width: "50%" }}>
-          <Suspense fallback={<div>Loading ...3</div>}>
+          <Suspense fallback={<div>Loading ...4</div>}>
             <BaseBox
               label="Base"
               options={symbols}
@@ -117,7 +116,7 @@ const ExchangeRate = () => {
           </Suspense>
         </Grid>
         <Grid item xs="auto" style={{ width: "50%" }}>
-          <Suspense fallback={<div>Loading ...4</div>}>
+          <Suspense fallback={<div>Loading ...5</div>}>
             <SymbolBox
               label="Symbols"
               options={symbols}
@@ -143,7 +142,7 @@ const ExchangeRate = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <Suspense fallback={<div>Loading ...5</div>}>
+          <Suspense fallback={<div>Loading ...6</div>}>
             <SourceBox onChange={handleChangeSource} />
           </Suspense>
         </Grid>
