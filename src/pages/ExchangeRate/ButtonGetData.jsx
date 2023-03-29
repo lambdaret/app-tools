@@ -16,7 +16,6 @@ import {
   DOWNLOAD_DATA,
   JSON_URL,
   JSON_PARAM,
-  JSON_DATA,
 } from "./exchangeRateSlice";
 
 const ButtonGetData = () => {
@@ -38,7 +37,6 @@ const ButtonGetData = () => {
     setSelected(DOWNLOAD_URLS, []);
     setSelected(DOWNLOAD_DATA, "");
     setSelected(JSON_URL, "");
-    setSelected(JSON_DATA, {});
 
     const params = {
       start_date: selectedStartDate || "",

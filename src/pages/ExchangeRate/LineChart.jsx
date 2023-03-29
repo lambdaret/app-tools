@@ -1,13 +1,8 @@
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  JSON_DATA,
-  getStateExchangeRate,
-  JSON_PARAM,
-  setStateExchangeRate,
-} from "./exchangeRateSlice";
-import LinePlot from "./LinePlot";
+import { getStateExchangeRate, JSON_PARAM } from "./exchangeRateSlice";
+import Plot from "react-plotly.js";
 import axios from "axios";
 
 const getUrls = (jsonParam) => {
@@ -58,9 +53,52 @@ const getData = (results) => {
   return data;
 };
 
+const getRates = (jsonData) => {
+  if (jsonData === undefined) {
+    return [];
+  }
+
+  const { rates } = jsonData;
+  if (rates === undefined) {
+    return [];
+  }
+
+  const dates = Object.keys(rates);
+  const symbol_x = {};
+  const symbol_y = {};
+  if (dates?.length > 0) {
+    for (let date of dates) {
+      const rates_date = rates[date];
+      for (let symbol in rates[date]) {
+        const rate = rates_date[symbol];
+        if (!(symbol in symbol_x)) {
+          symbol_x[symbol] = [];
+          symbol_y[symbol] = [];
+        }
+        symbol_x[symbol].push(date);
+        symbol_y[symbol].push(rate);
+      }
+    }
+    const symbols = Object.keys(symbol_x);
+    const data = symbols.map((symbol) => {
+      return {
+        x: Object.values(symbol_x[symbol]),
+        y: Object.values(symbol_y[symbol]),
+        type: "scatter",
+        name: symbol,
+        visible: symbol === symbols[0] ? true : "legendonly",
+      };
+    });
+    return data;
+  } else {
+    return [];
+  }
+};
+
 const LineChart = () => {
   const dispatch = useDispatch();
   const jsonParam = useSelector(getStateExchangeRate(JSON_PARAM));
+  const [jsonData, setJsonData] = useState([]);
 
   const apiUrls = getUrls(jsonParam);
 
@@ -78,13 +116,37 @@ const LineChart = () => {
 
   useEffect(() => {
     const data = getData(datas);
-    dispatch(setStateExchangeRate(JSON_DATA, data));
+    getRates();
+    setJsonData(data);
   }, [datas, dispatch]);
 
   const onRelayout = (e) => {};
   return (
     <Suspense fallback={<div>Loading ...6</div>}>
-      <LinePlot onRelayout={onRelayout} />
+      <Plot
+        data={getRates(jsonData)}
+        useResizeHandler={true}
+        layout={{
+          showlegend: true,
+          autosize: true,
+          dragmode: "pan",
+          xaxis: {
+            type: "date",
+            tickformat: "%Y-%m-%d",
+            tickangle: -45,
+          },
+          title: `Exchange Rate - Base: ${jsonData?.base || ""}`,
+        }}
+        config={{
+          displayModeBar: true,
+          displaylogo: false,
+        }}
+        style={{
+          width: "100%",
+          height: "100%",
+        }}
+        onRelayout={onRelayout}
+      />
     </Suspense>
   );
 };
