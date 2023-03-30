@@ -61,6 +61,7 @@ const ButtonGetData = () => {
     setSelected(JSON_PARAM, {
       ...params,
       format: "",
+      t: new Date().getTime(),
     });
     setSelected(DOWNLOAD_URLS, [downloadUrl]);
 
